@@ -1,5 +1,5 @@
 try {
-  var socket = new WebSocket("ws://localhost:8000/socket");
+  var socket = new WebSocket("ws://shrouded-meadow-7316.herokuapp.com/socket");
   console.log("Websocket Status: " + socket.readyState);
 }
 

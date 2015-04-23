@@ -10,7 +10,7 @@ import (
 
 // Local server address
 const (
-  listenAddr = "localhost:8000"
+  listenAddr = "shrouded-meadow-7316.herokuapp.com"
 )
 
 var (
