@@ -8,11 +8,6 @@ import (
   "os"
 )
 
-// Local server address
-const (
-  listenAddr = "shrouded-meadow-7316.herokuapp.com:8000"
-)
-
 var (
   pwd, _        = os.Getwd()
   RootTemp      = template.Must(template.ParseFiles(pwd + "/main.html"))
