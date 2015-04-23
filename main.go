@@ -8,11 +8,6 @@ import (
   "os"
 )
 
-// Local server address
-const (
-  listenAddr = "localhost:8000"
-)
-
 var (
   pwd, _        = os.Getwd()
   RootTemp      = template.Must(template.ParseFiles(pwd + "/main.html"))
@@ -75,7 +70,7 @@ func SocketServer(ws *websocket.Conn) {
 
 // Renders the template for the root page
 func RootHandler(w http.ResponseWriter, req *http.Request) {
-  err := RootTemp.Execute(w, listenAddr)
+  err := RootTemp.Execute(w, ":"+os.Getenv("PORT"))
   if err != nil {
     http.Error(w, err.Error(), http.StatusInternalServerError)
   }
@@ -85,7 +80,7 @@ func RootHandler(w http.ResponseWriter, req *http.Request) {
 func main() {
   // Start an HTTP server with given address and DefaultServeMux handler
   // DefaultServeMux is like a HTTP request router that is instantiated by default when the HTTP package is used
-  err := http.ListenAndServe(listenAddr, nil)
+  err := http.ListenAndServe(":"+os.Getenv("PORT"), nil)
   if err != nil {
     // panic creates run-time error and stops the program
     panic("ListenAndServe: " + err.Error())
